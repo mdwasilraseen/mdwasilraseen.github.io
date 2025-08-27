@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Justin Bieber Fan Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 20px;
+    }
+
+    @keyframes wobble {
+  0% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-5deg) scale(1.05); }
+  30% { transform: rotate(4deg) scale(0.95); }
+  45% { transform: rotate(-3deg) scale(1.02); }
+  60% { transform: rotate(2deg) scale(0.98); }
+  75% { transform: rotate(-1deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.gallery img:hover {
+  animation: wobble 0.6s;
+}
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    nav {
+      margin: 20px 0;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #f47c00;
+    }
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 200px;
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Justin Bieber Fan Page</h1>
+    <p>A place for Beliebers to celebrate Justin Bieber!</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#music">Music</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="content" id="about">
+    <h2>About Justin Bieber</h2>
+    <p>
+      Justin Bieber is a Canadian singer and songwriter who gained worldwide fame 
+      as a teenager and has since become one of the best-selling music artists globally. 
+      Known for hit singles, a powerful voice, and a dedicated fan base called 
+      <em>Beliebers</em>, Justin continues to influence pop music culture.
+    </p>
+  </div>
+
+  <div class="content" id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="justin2_720.png" alt="Justin Bieber 2015">
+      <img src="justin4_720.jpg" alt="Justin Bieber 2012">
+      <img src="justin6_720.jpg" alt="Justin Bieber 2011">
+    </div>
+  </div>
+
+  <div class="content" id="music">
+    <h2>Music Highlights</h2>
+    <ul>
+      <li>Multiple Billboard Hot 100 #1 singles</li>
+      <li>Over 150 million records sold worldwide</li>
+      <li>Collaborations with top artists across genres</li>
+      <li>Grammy Award winner and global pop icon</li>
+    </ul>
+  </div>
+
+  <div class="content" id="contact">
+    <h2>Contact the Fan Club</h2>
+    <p>Want to connect with other Beliebers? Email us at: <a href="mailto:beliebers@example.com">beliebers@example.com</a></p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Justin Bieber Fan Page | Made with ❤️ by Beliebers</p>
+  </footer>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // The message you want spoken aloud
+  var message = "Hey Babe! Welcome to the Justin Bieber fan page! Enjoy your visit, Belieber!";
+  
+  // Create a new utterance for the message
+  var utter = new SpeechSynthesisUtterance(message);
+
+  // Optional: set voice, pitch, rate, etc.
+  // utter.voice = speechSynthesis.getVoices()[0]; // Uncomment to set a specific voice
+  utter.rate = 1;     // 1 is default, adjust if needed
+  utter.pitch = 1;    // 1 is default
+  
+  // Speak the message
+  window.speechSynthesis.speak(utter);
+});
+</script>
+
+</body>
+</html>
