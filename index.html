@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wasil Raseen | IS & Strategy</title>
+    <title>Wasil Raseen | Profile</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['League Spartan', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
-                        brand: '#1a1a1a', 
-                        accent: '#4F46E5', // SMU Blue-ish Indigo
-                        soft: '#f3f4f6'
+                        // "Off-black" is softer than pure black
+                        ink: '#1c1917', 
+                        // "Paper" color instead of pure white
+                        paper: '#f5f5f4', 
+                        // A more "highlighter" style accent
+                        highlight: '#4ade80', 
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
                     }
                 }
             }
@@ -28,206 +40,183 @@
     </script>
 
     <style>
-        /* Premium Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fff; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        /* Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
+        /* ADDING TEXTURE: This kills the "AI" sleekness */
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
+        /* Custom Selection Color */
+        ::selection { background: #4ade80; color: #1c1917; }
     </style>
 </head>
-<body class="text-brand bg-white antialiased">
+<body class="text-ink bg-paper antialiased">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="font-display font-bold text-2xl tracking-tight">
-                WASIL<span class="text-accent">.RASEEN</span>
+    <div class="noise-bg"></div>
+
+    <nav class="fixed w-full z-40 top-0 pt-6 px-6 mix-blend-difference text-ink">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-mono font-bold text-lg tracking-tight hover:underline decoration-2 underline-offset-4">
+                md.wasil_raseen
             </a>
-
-            <div class="hidden md:flex space-x-8 font-medium text-sm tracking-wide">
-                <a href="#philosophy" class="hover:text-accent transition-colors">PHILOSOPHY</a>
-                <a href="#projects" class="hover:text-accent transition-colors">PROJECTS</a>
-                <a href="#contact" class="px-4 py-2 bg-brand text-white rounded-lg hover:bg-accent transition-colors">GET IN TOUCH</a>
+            <div class="hidden md:flex gap-6 font-mono text-sm">
+                <a href="#mindset" class="hover:text-gray-500 transition-colors">/mindset</a>
+                <a href="#work" class="hover:text-gray-500 transition-colors">/work</a>
+                <a href="mailto:mwasil.r.2024@smu.edu.sg" class="hover:bg-black hover:text-white px-2 py-1 transition-all">email_me</a>
             </div>
-
-            <button class="md:hidden" onclick="toggleMenu()">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-        
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b absolute w-full px-6 py-4 flex flex-col space-y-4 shadow-lg">
-            <a href="#philosophy" class="block text-lg font-display">Philosophy</a>
-            <a href="#projects" class="block text-lg font-display">Projects</a>
-            <a href="#contact" class="block text-lg font-display text-accent">Get in Touch</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-        <div class="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center">
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-5xl w-full grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
             
-            <div class="reveal active space-y-6 z-10 order-2 md:order-1">
-                <div class="inline-block px-3 py-1 bg-gray-100 rounded-full text-xs font-bold tracking-widest text-accent mb-2">
-                    SMU INFORMATION SYSTEMS STUDENT
+            <div class="order-2 md:order-1 space-y-6">
+                <div class="inline-flex items-center gap-2 border border-ink/20 px-3 py-1 rounded-full text-xs font-mono">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    Student @ SMU School of Computing
                 </div>
-                <h1 class="font-display font-extrabold text-6xl md:text-8xl leading-none">
+
+                <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tight">
                     Hi, I'm <br>
-                    <span class="text-accent">Wasil!</span>
+                    <span class="relative inline-block">
+                        Wasil.
+                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-highlight" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" opacity="0.6" />
+                        </svg>
+                    </span>
                 </h1>
-                <p class="text-xl text-gray-600 max-w-lg leading-relaxed">
-                    Bridging the gap between clean design and robust infrastructure. I build systems that look good and work even better.
-                </p>
                 
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="https://www.linkedin.com/in/mohamed-wasil-raseen" target="_blank" 
-                       class="px-6 py-3 bg-brand text-white font-bold rounded-lg hover:bg-accent transition-colors">
-                        LinkedIn
+                <p class="text-xl md:text-2xl font-light text-gray-700 leading-relaxed max-w-lg">
+                    I’m an Information Systems student obsessing over the gap between <span class="font-mono bg-gray-200 px-1 text-sm align-middle">human_needs</span> and <span class="font-mono bg-gray-200 px-1 text-sm align-middle">tech_infrastructure</span>.
+                </p>
+
+                <div class="pt-4 flex gap-4 font-mono text-sm">
+                    <a href="https://www.linkedin.com/in/mohamed-wasil-raseen" target="_blank" class="border-b border-ink hover:bg-highlight hover:border-transparent transition-colors">
+                        LinkedIn ↗
                     </a>
-                    <a href="https://github.com/mdwasilraseen" target="_blank" 
-                       class="px-6 py-3 border-2 border-brand font-bold rounded-lg hover:bg-gray-50 transition-colors">
-                        GitHub
-                    </a>
-                    <a href="mailto:mwasil.r.2024@smu.edu.sg" 
-                       class="px-6 py-3 text-gray-500 hover:text-accent font-medium transition-colors">
-                        Email Me &rarr;
+                    <a href="https://github.com/mdwasilraseen" target="_blank" class="border-b border-ink hover:bg-highlight hover:border-transparent transition-colors">
+                        GitHub ↗
                     </a>
                 </div>
             </div>
 
-            <div class="reveal active delay-200 relative order-1 md:order-2 flex justify-center md:justify-end">
-                <div class="w-80 h-80 md:w-[500px] md:h-[600px] bg-gray-100 rounded-2xl overflow-hidden relative shadow-2xl border-4 border-white">
+            <div class="order-1 md:order-2 flex justify-center relative">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out">
+                    <div class="absolute inset-0 border-2 border-ink bg-white translate-x-2 translate-y-2"></div>
                     <img src="/Gemini_Generated_Image_xjny8txjny8txjny.png" 
                          alt="Wasil Raseen" 
-                         class="object-cover w-full h-full hover:scale-105 transition-transform duration-700">
-                </div>
-                <div class="absolute -bottom-10 right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl -z-10"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="philosophy" class="py-24 px-6 bg-soft">
-        <div class="max-w-7xl mx-auto w-full">
-            <h2 class="font-display font-bold text-5xl md:text-6xl mb-16 reveal">What Drives Me.</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="reveal delay-100 p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-accent">
-                    <div class="text-4xl mb-4">🎨</div>
-                    <h3 class="font-display font-bold text-2xl mb-3">User Experience (UX)</h3>
-                    <p class="text-gray-600">I believe functionality means nothing if it isn't usable. I focus on human-centric design principles.</p>
-                </div>
-
-                <div class="reveal delay-200 p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-brand">
-                    <div class="text-4xl mb-4">🏗️</div>
-                    <h3 class="font-display font-bold text-2xl mb-3">Strategic IT</h3>
-                    <p class="text-gray-600">Implementation is easy; strategy is hard. I align technical solutions with real business value.</p>
-                </div>
-
-                <div class="reveal delay-300 p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-4 border-gray-400">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h3 class="font-display font-bold text-2xl mb-3">Digital Efficiency</h3>
-                    <p class="text-gray-600">Optimizing systems to run smoother, faster, and smarter. Efficiency is the ultimate elegance.</p>
+                         class="absolute inset-0 w-full h-full object-cover border-2 border-ink grayscale hover:grayscale-0 transition-all duration-500">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="relative">
-        <div class="sticky top-20 z-0 py-12 bg-white/80 backdrop-blur-sm border-b border-gray-100">
-            <h2 class="text-center font-display font-bold text-6xl tracking-tight">Featured Work</h2>
-        </div>
-
-        <div class="min-h-screen flex items-center justify-center p-6 bg-white sticky top-0 z-10 border-t border-gray-100">
-            <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center reveal">
-                <div>
-                    <span class="text-accent font-bold tracking-widest text-xs">ACADEMIC PROJECT</span>
-                    <h3 class="font-display font-bold text-5xl mt-2 mb-6">Project Title 01</h3>
-                    <p class="text-gray-600 mb-6">
-                        A brief description of a major project you worked on at SMU. Explain the problem you solved using your IS skills.
-                    </p>
-                    <div class="flex gap-2 mb-8">
-                        <span class="px-3 py-1 bg-gray-100 text-xs font-bold rounded">Python</span>
-                        <span class="px-3 py-1 bg-gray-100 text-xs font-bold rounded">SQL</span>
-                        <span class="px-3 py-1 bg-gray-100 text-xs font-bold rounded">Figma</span>
+    <section id="mindset" class="py-24 px-6 border-t border-ink/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-[1fr_2fr] gap-12">
+                <h2 class="font-mono text-sm tracking-widest uppercase text-gray-500 sticky top-24 self-start">
+                    01. My Brain
+                </h2>
+                
+                <div class="space-y-12">
+                    <div class="group">
+                        <h3 class="text-3xl font-bold mb-2 group-hover:text-gray-600 transition-colors">The User comes first.</h3>
+                        <p class="text-lg text-gray-600 font-light">
+                            I don't just write code; I design experiences. If a system is powerful but confusing, it’s a failed system. I lean heavily on UX principles.
+                        </p>
                     </div>
-                </div>
-                <div class="bg-gray-100 rounded-xl p-10 h-80 flex items-center justify-center border border-dashed border-gray-300">
-                    <p class="text-gray-400 font-display text-xl">Project Screenshot</p>
-                </div>
-            </div>
-        </div>
+                    
+                    <div class="group">
+                        <h3 class="text-3xl font-bold mb-2 group-hover:text-gray-600 transition-colors">Strategy over Syntax.</h3>
+                        <p class="text-lg text-gray-600 font-light">
+                            Knowing <i>how</i> to code is common. Knowing <i>what</i> to code (and why) is where I bring value. I focus on IT alignment with business goals.
+                        </p>
+                    </div>
 
-        <div class="min-h-screen flex items-center justify-center p-6 bg-gray-50 sticky top-0 z-20 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
-            <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center reveal">
-                <div class="order-last md:order-first bg-white rounded-xl p-10 h-80 flex items-center justify-center border border-dashed border-gray-300">
-                    <p class="text-gray-400 font-display text-xl">Project Screenshot</p>
-                </div>
-                <div>
-                    <span class="text-accent font-bold tracking-widest text-xs">WEB DEVELOPMENT</span>
-                    <h3 class="font-display font-bold text-5xl mt-2 mb-6">Project Title 02</h3>
-                    <p class="text-gray-600 mb-6">
-                        Another project description. Maybe a personal website, a hackathon submission, or a consulting case study.
-                    </p>
-                    <div class="flex gap-2 mb-8">
-                        <span class="px-3 py-1 bg-white text-xs font-bold rounded shadow-sm">React</span>
-                        <span class="px-3 py-1 bg-white text-xs font-bold rounded shadow-sm">Node.js</span>
+                    <div class="group">
+                        <h3 class="text-3xl font-bold mb-2 group-hover:text-gray-600 transition-colors">Efficiency is king.</h3>
+                        <p class="text-lg text-gray-600 font-light">
+                            I love messy data workflows—because I love fixing them. My goal is always to reduce friction and automate the boring stuff.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6 bg-brand text-white">
-        <div class="max-w-4xl w-full mx-auto text-center reveal">
-            <h2 class="font-display font-bold text-5xl md:text-7xl mb-8">Let's Connect.</h2>
-            <p class="text-xl text-gray-400 mb-12">Always open to discussing new opportunities, projects, or just chatting about tech.</p>
-            
-            <a href="mailto:mwasil.r.2024@smu.edu.sg" class="inline-block px-10 py-5 bg-white text-brand font-bold text-xl rounded-full hover:bg-accent hover:text-white transition-all transform hover:scale-105">
-                mwasil.r.2024@smu.edu.sg
-            </a>
+    <section id="work" class="py-24 px-6 border-t border-ink/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-[1fr_2fr] gap-12">
+                <h2 class="font-mono text-sm tracking-widest uppercase text-gray-500 sticky top-24 self-start">
+                    02. Selected Work
+                </h2>
 
-            <div class="flex justify-center gap-8 mt-12">
-                <a href="https://www.linkedin.com/in/mohamed-wasil-raseen" target="_blank" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-                <a href="https://github.com/mdwasilraseen" target="_blank" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
+                <div class="space-y-24">
+                    <article>
+                        <div class="bg-white border border-ink p-1 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] mb-6">
+                            <div class="h-64 bg-gray-100 flex items-center justify-center font-mono text-gray-400">
+                                [ Insert Screenshot ]
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-3xl font-bold">Project Name</h3>
+                            <span class="font-mono text-xs border border-ink rounded-full px-2 py-1">2024</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            A description that feels like a story. "I noticed that students struggled to find X, so I built Y using Python and React."
+                        </p>
+                        <div class="flex gap-2 font-mono text-xs">
+                            <span class="bg-gray-200 px-2 py-1">Python</span>
+                            <span class="bg-gray-200 px-2 py-1">SQL</span>
+                        </div>
+                    </article>
+
+                    <article>
+                        <div class="bg-white border border-ink p-1 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] mb-6">
+                            <div class="h-64 bg-gray-100 flex items-center justify-center font-mono text-gray-400">
+                                [ Insert Screenshot ]
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-3xl font-bold">Consulting Case</h3>
+                            <span class="font-mono text-xs border border-ink rounded-full px-2 py-1">2023</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Designed a database schema for a logistics scenario to optimize supply chain flow. Reduced hypothetical latency by 40%.
+                        </p>
+                        <div class="flex gap-2 font-mono text-xs">
+                            <span class="bg-gray-200 px-2 py-1">Figma</span>
+                            <span class="bg-gray-200 px-2 py-1">Data Modeling</span>
+                        </div>
+                    </article>
+                </div>
             </div>
-
-            <footer class="mt-24 text-gray-600 text-sm">
-                &copy; 2024 Wasil Raseen. Built with Strategy & Code.
-            </footer>
         </div>
     </section>
 
-    <script>
-        // Toggle Mobile Menu
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
+    <footer class="py-24 px-6 border-t border-ink/10 bg-white">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+            <div>
+                <h2 class="text-5xl font-bold mb-6">Let's chat.</h2>
+                <a href="mailto:mwasil.r.2024@smu.edu.sg" class="text-xl border-b-2 border-highlight hover:bg-highlight hover:border-transparent transition-all">
+                    mwasil.r.2024@smu.edu.sg
+                </a>
+            </div>
+            
+            <div class="font-mono text-sm text-gray-500 text-right">
+                <p>Designed in Singapore.</p>
+                <p>Built with ❤️ & Coffee.</p>
+                <p class="mt-4 opacity-50">&copy; 2024 Wasil Raseen</p>
+            </div>
+        </div>
+    </footer>
 
-        // Scroll Reveal Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on load
-    </script>
 </body>
 </html>
