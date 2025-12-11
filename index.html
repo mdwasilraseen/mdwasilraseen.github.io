@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wasil Raseen | Profile</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
@@ -18,21 +17,9 @@
                         sans: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
-                        // "Off-black" is softer than pure black
                         ink: '#1c1917', 
-                        // "Paper" color instead of pure white
-                        paper: '#f5f5f4', 
-                        // A more "highlighter" style accent
-                        highlight: '#4ade80', 
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                        paper: '#fafaf9', // Warmer white
+                        highlight: '#4ade80',
                     }
                 }
             }
@@ -40,183 +27,211 @@
     </script>
 
     <style>
-        /* ADDING TEXTURE: This kills the "AI" sleekness */
+        /* 1. TEXTURE: Keeps it from looking like a template */
         .noise-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.05;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 50; opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Custom Selection Color */
-        ::selection { background: #4ade80; color: #1c1917; }
+        /* 2. FRIENDLY PATTERN: Mimics the emoji background from the video */
+        .doodle-bg {
+            background-color: #f5f5f4;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239ca3af' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* 3. TYPEWRITER CURSOR */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #1c1917;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+        
+        /* 4. ROUNDED CLIPPING for the image (Like the video) */
+        .blob-mask {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            transition: border-radius 1s ease-in-out;
+        }
+        .blob-mask:hover {
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        }
     </style>
 </head>
 <body class="text-ink bg-paper antialiased">
 
     <div class="noise-bg"></div>
 
-    <nav class="fixed w-full z-40 top-0 pt-6 px-6 mix-blend-difference text-ink">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <a href="#" class="font-mono font-bold text-lg tracking-tight hover:underline decoration-2 underline-offset-4">
-                md.wasil_raseen
-            </a>
-            <div class="hidden md:flex gap-6 font-mono text-sm">
-                <a href="#mindset" class="hover:text-gray-500 transition-colors">/mindset</a>
-                <a href="#work" class="hover:text-gray-500 transition-colors">/work</a>
-                <a href="mailto:mwasil.r.2024@smu.edu.sg" class="hover:bg-black hover:text-white px-2 py-1 transition-all">email_me</a>
+    <nav class="fixed w-full z-40 top-0 pt-6 px-6 mix-blend-darken">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-bold text-xl tracking-tight">wasil<span class="text-highlight">.</span>raseen</a>
+            <div class="hidden md:flex gap-8 font-medium text-sm text-gray-500">
+                <a href="#about" class="hover:text-ink transition-colors">About</a>
+                <a href="#projects" class="hover:text-ink transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-ink transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
-    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="max-w-5xl w-full grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+    <section class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
             
-            <div class="order-2 md:order-1 space-y-6">
-                <div class="inline-flex items-center gap-2 border border-ink/20 px-3 py-1 rounded-full text-xs font-mono">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    Student @ SMU School of Computing
-                </div>
-
-                <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tight">
-                    Hi, I'm <br>
-                    <span class="relative inline-block">
-                        Wasil.
-                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-highlight" viewBox="0 0 100 10" preserveAspectRatio="none">
-                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" opacity="0.6" />
-                        </svg>
-                    </span>
+            <div class="space-y-6 z-10">
+                <h1 class="text-7xl md:text-9xl font-bold tracking-tighter leading-none">
+                    Hi. I'm <br>
+                    Wasil.
                 </h1>
                 
-                <p class="text-xl md:text-2xl font-light text-gray-700 leading-relaxed max-w-lg">
-                    I’m an Information Systems student obsessing over the gap between <span class="font-mono bg-gray-200 px-1 text-sm align-middle">human_needs</span> and <span class="font-mono bg-gray-200 px-1 text-sm align-middle">tech_infrastructure</span>.
-                </p>
-
-                <div class="pt-4 flex gap-4 font-mono text-sm">
-                    <a href="https://www.linkedin.com/in/mohamed-wasil-raseen" target="_blank" class="border-b border-ink hover:bg-highlight hover:border-transparent transition-colors">
-                        LinkedIn ↗
-                    </a>
-                    <a href="https://github.com/mdwasilraseen" target="_blank" class="border-b border-ink hover:bg-highlight hover:border-transparent transition-colors">
-                        GitHub ↗
-                    </a>
+                <div class="text-2xl md:text-3xl font-mono text-gray-500 h-12 flex items-center">
+                    <span>A&nbsp;</span>
+                    <span id="typewriter" class="text-ink font-bold"></span>
+                    <span class="cursor h-8 ml-1"></span>
                 </div>
+
+                <p class="text-lg text-gray-600 max-w-md leading-relaxed pt-4">
+                    Information Systems student at SMU. <br>
+                    Blending <b>User Experience</b> with <b>Strategic IT</b> to build digital products that matter.
+                </p>
             </div>
 
-            <div class="order-1 md:order-2 flex justify-center relative">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out">
-                    <div class="absolute inset-0 border-2 border-ink bg-white translate-x-2 translate-y-2"></div>
+            <div class="flex justify-center md:justify-end relative">
+                <div class="w-80 h-80 md:w-[500px] md:h-[500px] bg-gray-200 blob-mask overflow-hidden shadow-xl relative z-10">
                     <img src="/Gemini_Generated_Image_xjny8txjny8txjny.png" 
                          alt="Wasil Raseen" 
-                         class="absolute inset-0 w-full h-full object-cover border-2 border-ink grayscale hover:grayscale-0 transition-all duration-500">
+                         class="object-cover w-full h-full hover:scale-110 transition-transform duration-700">
                 </div>
+                <div class="absolute -bottom-10 right-20 text-6xl opacity-20 rotate-12 z-0">🏐</div>
+                <div class="absolute top-10 left-10 text-6xl opacity-20 -rotate-12 z-0">💻</div>
             </div>
         </div>
     </section>
 
-    <section id="mindset" class="py-24 px-6 border-t border-ink/10">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-[1fr_2fr] gap-12">
-                <h2 class="font-mono text-sm tracking-widest uppercase text-gray-500 sticky top-24 self-start">
-                    01. My Brain
-                </h2>
-                
-                <div class="space-y-12">
-                    <div class="group">
-                        <h3 class="text-3xl font-bold mb-2 group-hover:text-gray-600 transition-colors">The User comes first.</h3>
-                        <p class="text-lg text-gray-600 font-light">
-                            I don't just write code; I design experiences. If a system is powerful but confusing, it’s a failed system. I lean heavily on UX principles.
-                        </p>
-                    </div>
-                    
-                    <div class="group">
-                        <h3 class="text-3xl font-bold mb-2 group-hover:text-gray-600 transition-colors">Strategy over Syntax.</h3>
-                        <p class="text-lg text-gray-600 font-light">
-                            Knowing <i>how</i> to code is common. Knowing <i>what</i> to code (and why) is where I bring value. I focus on IT alignment with business goals.
-                        </p>
-                    </div>
-
-                    <div class="group">
-                        <h3 class="text-3xl font-bold mb-2 group-hover:text-gray-600 transition-colors">Efficiency is king.</h3>
-                        <p class="text-lg text-gray-600 font-light">
-                            I love messy data workflows—because I love fixing them. My goal is always to reduce friction and automate the boring stuff.
-                        </p>
-                    </div>
-                </div>
+    <section id="about" class="py-32 px-6 doodle-bg border-y border-gray-200">
+        <div class="max-w-4xl mx-auto text-center bg-white p-12 rounded-3xl shadow-sm border border-gray-100">
+            <h2 class="text-5xl font-bold mb-8">About Me!</h2>
+            <p class="text-xl leading-relaxed text-gray-600">
+                I’m passionate about exploring new languages and frameworks through hands-on projects. 
+                Outside of tech, I obsess over <b>Web Design</b> trends and <b>IT Consulting</b> strategies.
+                I believe the best systems are the ones that feel human.
+            </p>
+            
+            <div class="flex justify-center gap-4 mt-8">
+                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold">📸 Photography</span>
+                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold">🏐 Volleyball</span>
+                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold">☕ Coffee</span>
             </div>
         </div>
     </section>
 
-    <section id="work" class="py-24 px-6 border-t border-ink/10">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-[1fr_2fr] gap-12">
-                <h2 class="font-mono text-sm tracking-widest uppercase text-gray-500 sticky top-24 self-start">
-                    02. Selected Work
-                </h2>
-
-                <div class="space-y-24">
-                    <article>
-                        <div class="bg-white border border-ink p-1 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] mb-6">
-                            <div class="h-64 bg-gray-100 flex items-center justify-center font-mono text-gray-400">
-                                [ Insert Screenshot ]
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h3 class="text-3xl font-bold">Project Name</h3>
-                            <span class="font-mono text-xs border border-ink rounded-full px-2 py-1">2024</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            A description that feels like a story. "I noticed that students struggled to find X, so I built Y using Python and React."
-                        </p>
-                        <div class="flex gap-2 font-mono text-xs">
-                            <span class="bg-gray-200 px-2 py-1">Python</span>
-                            <span class="bg-gray-200 px-2 py-1">SQL</span>
-                        </div>
-                    </article>
-
-                    <article>
-                        <div class="bg-white border border-ink p-1 shadow-[4px_4px_0px_0px_rgba(28,25,23,1)] mb-6">
-                            <div class="h-64 bg-gray-100 flex items-center justify-center font-mono text-gray-400">
-                                [ Insert Screenshot ]
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h3 class="text-3xl font-bold">Consulting Case</h3>
-                            <span class="font-mono text-xs border border-ink rounded-full px-2 py-1">2023</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">
-                            Designed a database schema for a logistics scenario to optimize supply chain flow. Reduced hypothetical latency by 40%.
-                        </p>
-                        <div class="flex gap-2 font-mono text-xs">
-                            <span class="bg-gray-200 px-2 py-1">Figma</span>
-                            <span class="bg-gray-200 px-2 py-1">Data Modeling</span>
-                        </div>
-                    </article>
+    <section id="projects" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-[1fr_2fr] gap-12 relative">
+            
+            <div class="hidden md:block">
+                <div class="sticky top-32">
+                    <h2 class="text-7xl font-bold mb-4">Projects</h2>
+                    <p class="text-gray-500 text-lg">We all love them.</p>
+                    <div class="mt-8">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-bounce">
+                            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+                        </svg>
+                    </div>
                 </div>
+            </div>
+
+            <div class="space-y-32 pt-10 md:pt-0">
+                <h2 class="md:hidden text-6xl font-bold mb-10">Projects</h2>
+
+                <div class="group">
+                    <h3 class="text-5xl font-bold mb-4 group-hover:text-gray-600 transition-colors cursor-pointer">MaiBro</h3>
+                    <div class="bg-gray-100 rounded-2xl h-80 mb-6 overflow-hidden relative">
+                         <div class="absolute inset-0 flex items-center justify-center text-gray-300 font-bold text-4xl">
+                            [ App Screenshot ]
+                         </div>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        A platform for SMU students connecting buyers and sellers for takeaway options.
+                        It solves the "busy lunch hour" problem by creating a peer-to-peer delivery network.
+                    </p>
+                    <div class="flex gap-2 mt-4 text-sm font-mono text-gray-500">
+                        <span>#React</span> <span>#Firebase</span> <span>#Community</span>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <h3 class="text-5xl font-bold mb-4 group-hover:text-gray-600 transition-colors cursor-pointer">ONE.RS</h3>
+                    <div class="bg-gray-100 rounded-2xl h-80 mb-6 overflow-hidden relative">
+                        <div class="absolute inset-0 flex items-center justify-center text-gray-300 font-bold text-4xl">
+                            [ Dashboard Screenshot ]
+                         </div>
+                    </div>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Connecting restaurants with suppliers. Streamlines sourcing ingredients and inventory tracking
+                        to reduce food waste and improve operational efficiency.
+                    </p>
+                    <div class="flex gap-2 mt-4 text-sm font-mono text-gray-500">
+                        <span>#Python</span> <span>#SupplyChain</span> <span>#B2B</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="py-24 px-6 border-t border-ink/10 bg-white">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-            <div>
-                <h2 class="text-5xl font-bold mb-6">Let's chat.</h2>
-                <a href="mailto:mwasil.r.2024@smu.edu.sg" class="text-xl border-b-2 border-highlight hover:bg-highlight hover:border-transparent transition-all">
-                    mwasil.r.2024@smu.edu.sg
+    <section id="contact" class="py-32 px-6 doodle-bg border-t border-gray-200">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-6xl md:text-8xl font-bold mb-8">Contact Me!</h2>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6 mt-12">
+                <a href="mailto:mwasil.r.2024@smu.edu.sg" class="bg-ink text-white px-8 py-4 rounded-xl text-xl font-bold hover:bg-highlight hover:text-ink transition-colors">
+                    Email Me
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="bg-white border-2 border-ink text-ink px-8 py-4 rounded-xl text-xl font-bold hover:bg-gray-50 transition-colors">
+                    LinkedIn
                 </a>
             </div>
             
-            <div class="font-mono text-sm text-gray-500 text-right">
-                <p>Designed in Singapore.</p>
-                <p>Built with ❤️ & Coffee.</p>
-                <p class="mt-4 opacity-50">&copy; 2024 Wasil Raseen</p>
-            </div>
+            <p class="mt-12 text-gray-500 font-mono">
+                mwasil.r.2024@smu.edu.sg
+            </p>
         </div>
-    </footer>
+    </section>
 
+    <script>
+        // TYPEWRITER LOGIC
+        const words = ["User Experience Designer.", "IT Strategist.", "Problem Solver.", "Student."];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const heading = document.getElementById("typewriter");
+            const word = words[i];
+            const current = heading.innerHTML;
+            
+            if (current.length < word.length) {
+                heading.innerHTML = word.substring(0, current.length + 1);
+                timer = setTimeout(typeWriter, 100); // Typing speed
+            } else {
+                setTimeout(erase, 2000); // Wait before erasing
+            }
+        }
+
+        function erase() {
+            const heading = document.getElementById("typewriter");
+            const current = heading.innerHTML;
+            
+            if (current.length > 0) {
+                heading.innerHTML = current.substring(0, current.length - 1);
+                timer = setTimeout(erase, 50); // Erasing speed
+            } else {
+                i = (i + 1) % words.length;
+                typeWriter();
+            }
+        }
+
+        // Start animation
+        window.onload = typeWriter;
+    </script>
 </body>
 </html>
