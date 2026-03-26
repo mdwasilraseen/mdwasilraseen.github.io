@@ -1,94 +1,489 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" class="scroll-smooth">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Wasil Raseen | Profile</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+
+
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    fontFamily: {
+
+                        mono: ['JetBrains Mono', 'monospace'],
+
+                        sans: ['Space Grotesk', 'sans-serif'],
+
+                    },
+
+                    colors: {
+
+                        ink: '#1c1917', 
+
+                        paper: '#fafaf9', // Warmer white
+
+                        highlight: '#4ade80',
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+
+
     <style>
-        /* Your provided CSS */
-        body {
-            font-family: sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+
+        /* 1. TEXTURE: Keeps it from looking like a template */
+
+        .noise-bg {
+
+            position: fixed;
+
+            top: 0; left: 0; width: 100vw; height: 100vh;
+
+            pointer-events: none; z-index: 50; opacity: 0.04;
+
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
         }
 
-        .profile-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 300px;
+
+
+        /* 2. FRIENDLY PATTERN: Mimics the emoji background from the video */
+
+        .doodle-bg {
+
+            background-color: #f5f5f4;
+
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239ca3af' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
         }
 
-        .profile-pic {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
 
-        h1 {
-            margin: 10px 0;
-            font-size: 1.5em;
-        }
 
-        p {
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
+        /* 3. TYPEWRITER CURSOR */
 
-        .social-links {
-            margin-top: 15px;
-        }
+        .cursor {
 
-        .social-links a {
-            text-decoration: none;
-            color: #007BFF;
-            margin: 0 10px;
-            font-weight: bold;
             display: inline-block;
-            margin-bottom: 10px;
+
+            width: 3px;
+
+            background-color: #1c1917;
+
+            animation: blink 1s infinite;
+
         }
 
-        .social-links a:hover {
-            text-decoration: underline;
+        @keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+
+        
+
+        /* 4. ROUNDED CLIPPING for the image (Like the video) */
+
+        .blob-mask {
+
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+            transition: border-radius 1s ease-in-out;
+
         }
 
-        /* Added a small style for your project link to make it stand out */
-        .project-link {
-            display: block;
-            background-color: #4ade80; /* Your highlight green */
-            color: #1c1917 !important;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
+        .blob-mask:hover {
+
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+
         }
+
     </style>
-</head>
-<body>
 
-    <div class="profile-card">
-        <img src="6183982788999056335.jpg" alt="Wasil Raseen" class="profile-pic">
-        
-        <h1>Wasil Raseen</h1>
-        <p>Information Systems Student at SMU. <br> Blending UX with Strategic IT.</p>
-        
-        <div class="social-links">
-            <a href="https://touch-grass-77c7c.web.app/" target="_blank" class="project-link">
-                🌱 Touch Grass App
-            </a>
-            <br>
-            <a href="mailto:mwasil.r.2024@smu.edu.sg">Email</a>
-            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+</head>
+
+<body class="text-ink bg-paper antialiased">
+
+
+
+    <div class="noise-bg"></div>
+
+
+
+    <nav class="fixed w-full z-40 top-0 pt-6 px-6 mix-blend-darken">
+
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+
+            <a href="#" class="font-bold text-xl tracking-tight">wasil<span class="text-highlight">.</span>raseen</a>
+
+            <div class="hidden md:flex gap-8 font-medium text-sm text-gray-500">
+
+                <a href="#about" class="hover:text-ink transition-colors">About</a>
+
+                <a href="#projects" class="hover:text-ink transition-colors">Projects</a>
+
+                <a href="#contact" class="hover:text-ink transition-colors">Contact</a>
+
+            </div>
+
         </div>
-    </div>
+
+    </nav>
+
+
+
+    <section class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
+
+            
+
+            <div class="space-y-6 z-10">
+
+                <h1 class="text-7xl md:text-9xl font-bold tracking-tighter leading-none">
+
+                    Hi. I'm <br>
+
+                    Wasil.
+
+                </h1>
+
+                
+
+                <div class="text-2xl md:text-3xl font-mono text-gray-500 h-12 flex items-center">
+
+                    <span>A&nbsp;</span>
+
+                    <span id="typewriter" class="text-ink font-bold"></span>
+
+                    <span class="cursor h-8 ml-1"></span>
+
+                </div>
+
+
+
+                <p class="text-lg text-gray-600 max-w-md leading-relaxed pt-4">
+
+                    Information Systems student at SMU. <br>
+
+                    Blending <b>User Experience</b> with <b>Strategic IT</b> to build digital products that matter.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="flex justify-center md:justify-end relative">
+
+                <div class="w-80 h-80 md:w-[500px] md:h-[500px] bg-gray-200 blob-mask overflow-hidden shadow-xl relative z-10">
+
+                    <img src="6183982788999056335.jpg" 
+
+                         alt="Wasil Raseen" 
+
+                         class="object-cover object-[50%_100%] w-full h-full hover:scale-110 transition-transform duration-700">
+
+                </div>
+
+                <div class="absolute -bottom-10 right-20 text-6xl opacity-20 rotate-12 z-0">⚽</div>
+
+                <div class="absolute top-10 left-10 text-6xl opacity-20 -rotate-12 z-0">💻</div>
+
+                <div class="absolute -bottom-5 -left-5 text-6xl opacity-20 -rotate-6 z-0">🎬</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="about" class="py-32 px-6 doodle-bg border-y border-gray-200">
+
+        <div class="max-w-4xl mx-auto text-center bg-white p-12 rounded-3xl shadow-sm border border-gray-100">
+
+            <h2 class="text-5xl font-bold mb-8">About Me!</h2>
+
+            <p class="text-xl leading-relaxed text-gray-600">
+
+                I’m passionate about understanding current businesses and figuring out ways to implement tech solutions. 
+
+                Outside of tech, I enjoy <b>watching movies </b> , <b>playing football <b> and <b> exploring cafes.</b>
+
+            </p>
+
+            
+
+            <div class="flex justify-center gap-4 mt-8">
+
+                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold">🎬 Movies </span>
+
+                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold">⚽ Football</span>
+
+                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm font-bold">☕ Coffee</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="projects" class="py-24 px-6 max-w-6xl mx-auto">
+
+        <div class="grid md:grid-cols-[1fr_2fr] gap-12 relative">
+
+            
+
+            <div class="hidden md:block">
+
+                <div class="sticky top-32">
+
+                    <h2 class="text-7xl font-bold mb-4">Projects</h2>
+
+                    <p class="text-gray-500 text-lg">The real fun.</p>
+
+                    <div class="mt-8">
+
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-bounce">
+
+                            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="space-y-32 pt-10 md:pt-0">
+
+                <h2 class="md:hidden text-6xl font-bold mb-10">Projects</h2>
+
+
+
+                <div class="group">
+
+                    <h3 class="text-5xl font-bold mb-4 group-hover:text-gray-600 transition-colors cursor-pointer">
+
+                        Touch Grass
+
+                    </h3>
+
+                    
+
+                    <div class="bg-gray-100 rounded-2xl h-80 mb-6 overflow-hidden relative border border-gray-100">
+
+                        <img src="touchgrass.png" 
+
+                             alt="Touch Grass App" 
+
+                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+
+                    </div>
+
+                
+
+                    <p class="text-lg text-gray-600 leading-relaxed">
+
+                        A one-stop platform for Singaporeans to find events to attend during their free time.
+
+                        It solves the problem of recommending events, finding a free day amongst friends and planning itinerary.
+
+                    </p>
+
+                
+
+                    <div class="flex flex-wrap gap-2 mt-4 text-sm font-mono text-gray-500">
+
+                        <span class="px-2 py-1 rounded-md hover:bg-gray-200 hover:text-ink transition-colors cursor-pointer">#vue</span>
+
+                        <span class="px-2 py-1 rounded-md hover:bg-gray-200 hover:text-ink transition-colors cursor-pointer">#Firebase</span>
+
+                        <span class="px-2 py-1 rounded-md hover:bg-gray-200 hover:text-ink transition-colors cursor-pointer">#api</span>
+
+                        <span class="px-2 py-1 rounded-md hover:bg-gray-200 hover:text-ink transition-colors cursor-pointer">#web design</span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="group">
+
+                    <h3 class="text-5xl font-bold mb-4 group-hover:text-gray-600 transition-colors cursor-pointer">ONE.RS</h3>
+
+                    <div class="bg-gray-100 rounded-2xl h-80 mb-6 overflow-hidden relative">
+
+                        <div class="absolute inset-0 flex items-center justify-center text-gray-300 font-bold text-4xl">
+
+                            [ Dashboard Screenshot ]
+
+                         </div>
+
+                    </div>
+
+                    <p class="text-lg text-gray-600 leading-relaxed">
+
+                        Connecting restaurants with suppliers. Streamlines sourcing ingredients and inventory tracking
+
+                        to reduce food waste and improve operational efficiency.
+
+                    </p>
+
+                    <div class="flex gap-2 mt-4 text-sm font-mono text-gray-500">
+
+                        <span>#Python</span> <span>#SupplyChain</span> <span>#B2B</span>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="contact" class="py-32 px-6 doodle-bg border-t border-gray-200">
+
+        <div class="max-w-4xl mx-auto text-center">
+
+            <h2 class="text-6xl md:text-8xl font-bold mb-8">Contact Me!</h2>
+
+            
+
+            <div class="flex flex-col md:flex-row justify-center gap-6 mt-12">
+
+                <a href="mailto:mwasil.r.2024@smu.edu.sg" class="bg-ink text-white px-8 py-4 rounded-xl text-xl font-bold hover:bg-highlight hover:text-ink transition-colors">
+
+                    Email Me
+
+                </a>
+
+                <a href="https://linkedin.com" target="_blank" class="bg-white border-2 border-ink text-ink px-8 py-4 rounded-xl text-xl font-bold hover:bg-gray-50 transition-colors">
+
+                    LinkedIn
+
+                </a>
+
+            </div>
+
+            
+
+            <p class="mt-12 text-gray-500 font-mono">
+
+                mwasil.r.2024@smu.edu.sg
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <script>
+
+        // TYPEWRITER LOGIC
+
+        const words = ["User Experience Designer.", "IT Strategist.", "Problem Solver.", "Student."];
+
+        let i = 0;
+
+        let timer;
+
+
+
+        function typeWriter() {
+
+            const heading = document.getElementById("typewriter");
+
+            const word = words[i];
+
+            const current = heading.innerHTML;
+
+            
+
+            if (current.length < word.length) {
+
+                heading.innerHTML = word.substring(0, current.length + 1);
+
+                timer = setTimeout(typeWriter, 100); // Typing speed
+
+            } else {
+
+                setTimeout(erase, 2000); // Wait before erasing
+
+            }
+
+        }
+
+
+
+        function erase() {
+
+            const heading = document.getElementById("typewriter");
+
+            const current = heading.innerHTML;
+
+            
+
+            if (current.length > 0) {
+
+                heading.innerHTML = current.substring(0, current.length - 1);
+
+                timer = setTimeout(erase, 50); // Erasing speed
+
+            } else {
+
+                i = (i + 1) % words.length;
+
+                typeWriter();
+
+            }
+
+        }
+
+
+
+        // Start animation
+
+        window.onload = typeWriter;
+
+    </script>
 
 </body>
+
 </html>
